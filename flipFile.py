@@ -4,11 +4,18 @@ from sys import argv
 
 script, filename = argv
 
-file = open(filename, 'r')
+# open the original file:
+originalFile = open(filename, 'r')
+
+# append "_flipped" to the output file:
 flippedFile = open(filename+"_flipped", 'w')
-flippedFile.truncate()# clear what exists already
+
+# clear the *_flipped file, if it exists already:
+flippedFile.truncate()
 
 for line in file:
+    # reverse line
+    # from http://stackoverflow.com/questions/931092/reverse-a-string-in-python
     flippedLine = line[::-1]
     flippedFile.write(flippedLine)
     # We don't need to write a new line, since that will be written at the beginning of each line:
@@ -19,3 +26,4 @@ flippedFile.write("\n")
 
 file.close()	
 flippedFile.close()
+
