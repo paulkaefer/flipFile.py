@@ -32,7 +32,33 @@ for line in originalFile:
     # reverse line
     # from http://stackoverflow.com/questions/931092/reverse-a-string-in-python
     flippedLine = line[::-1]
-    flippedFile.write(flippedLine)
+
+    # handle characters we want to flip:
+    dummyCharacter = chr(9)
+
+    string = flippedLine
+
+    string = string.replace(")", dummyCharacter)
+    string = string.replace("(", ")")
+    string = string.replace(dummyCharacter, "(")
+
+    string = string.replace("}", dummyCharacter)
+    string = string.replace("{", "}")
+    string = string.replace(dummyCharacter, "}")
+
+    string = string.replace("]", dummyCharacter)
+    string = string.replace("[", "]")
+    string = string.replace(dummyCharacter, "[")
+
+    string = string.replace("\\", dummyCharacter)
+    string = string.replace("/", "\\")
+    string = string.replace(dummyCharacter, "/")
+
+    string = string.replace(">", dummyCharacter)
+    string = string.replace("<", ">")
+    string = string.replace(dummyCharacter, "<")
+
+    flippedFile.write(string)
     # write the stripped newline character back:
     flippedFile.write("\n")
 
