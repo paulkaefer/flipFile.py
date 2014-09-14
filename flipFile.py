@@ -20,8 +20,6 @@ if 1 == len(optionalCharacter):
         if longestLine < len(line):
             longestLine = len(line)
 
-print longestLine
-
 originalFile.close()
 originalFile = open(filename, 'r')
 
