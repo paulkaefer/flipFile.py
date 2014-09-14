@@ -2,7 +2,7 @@
 
 from sys import argv
 
-script, filename = argv
+script, filename, optionalCharacter = argv
 
 # open the original file:
 originalFile = open(filename, 'r')
@@ -13,17 +13,31 @@ flippedFile = open(filename+"_flipped", 'w')
 # clear the *_flipped file, if it exists already:
 flippedFile.truncate()
 
-for line in file:
+# optionalCharacter is what to fill if we want each line to have the same length
+longestLine = 0
+if 1 == len(optionalCharacter):
+    for line in originalFile:
+        if longestLine < len(line):
+            longestLine = len(line)
+
+print longestLine
+
+originalFile.close()
+originalFile = open(filename, 'r')
+
+for line in originalFile:
+    # remove newline character:
+    line = line.strip(line[-1:])
+    # if we want to fill the line with a character, do that:
+    if 0 < longestLine:
+        line = line + optionalCharacter*(longestLine - len(line))
     # reverse line
     # from http://stackoverflow.com/questions/931092/reverse-a-string-in-python
     flippedLine = line[::-1]
     flippedFile.write(flippedLine)
-    # We don't need to write a new line, since that will be written at the beginning of each line:
-    #flippedFile.write("\n")
+    # write the stripped newline character back:
+    flippedFile.write("\n")
 
-# write a new line, since the first line in the file will be blank, and it won't write a new line after the last line of the original file:
-flippedFile.write("\n")
-
-file.close()	
+originalFile.close()	
 flippedFile.close()
 
