@@ -1,7 +1,7 @@
 flipFile.py
 ===========
 
-Reverse each line of a text file.
+Reverse each line of a text file. It acts like a mirror, flipping (), [], {}, and <> characters.
 
 Usage:
 
