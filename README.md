@@ -14,4 +14,6 @@ Output:
 
  file with name FILENAME_flipped
 
+To run the example:
 
+ python flipFile.py cat " "
