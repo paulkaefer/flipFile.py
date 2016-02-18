@@ -44,7 +44,7 @@ for line in originalFile:
 
     string = string.replace("}", dummyCharacter)
     string = string.replace("{", "}")
-    string = string.replace(dummyCharacter, "}")
+    string = string.replace(dummyCharacter, "{")
 
     string = string.replace("]", dummyCharacter)
     string = string.replace("[", "]")
